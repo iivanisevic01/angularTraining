@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Intro to angular.js </title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+		<style> 
+			label { display : block; } 
+		</style>
+	</head>
+	<body>
+<!-- 	
+the parent and child are linked because data is an object which is get from the parent so the setting is done on the same property of the same object both times
+exception: this would fail if the child box is input first, hence initialization in parent controller
+ -->		
+ 		<div ng-app="myApp"> 
+		  <div ng-controller="parentCtrl">
+		  	Parent Message: {{ data.message }} <br>
+		  	Parent Message: <input ng-model="data.message">
+		  	<div ng-controller="childCtrl">
+		  		Child Message: {{ data.message }} <br>
+		  		Child Message: <input ng-model="data.message">
+		  	</div>
+		  </div>
+		</div>
+		<script>
+			angular.module('myApp', [])
+				.controller('parentCtrl', function($scope) {
+					$scope.data = {};
+				})
+				.controller('childCtrl', function($scope) {
+				});
+		</script>
+	</body>
+</html>

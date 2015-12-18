@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Intro to angular.js </title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+		<style> 
+			label { display : block; } 
+		</style>
+	</head>
+	<body>
+		<div ng-app="myApp"> 
+		  <div ng-controller="myCtrl">
+		  	Show me <input ng-model="showMe" type="checkbox">
+		  	<div ng-show="showMe">You can see me!</div>
+			<!-- more efficient when dealing with lots of content as it does not load it all in memory -->		  	
+			<div ng-if="showMe" class="ng-scope">If You can see me!</div>
+		  </div>
+		</div>
+		<script>
+			angular.module('myApp', [])
+				.controller('myCtrl', function($scope) {
+				});
+		</script>
+	</body>
+</html>

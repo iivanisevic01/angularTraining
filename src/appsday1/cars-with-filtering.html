@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Intro to angular.js </title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+		<style> 
+			label { display : block; } 
+		</style>
+	</head>
+	<body>
+		<div ng-app="myApp"> 
+		  <div ng-controller="myCtrl">
+		  	<label>Car Make Filter<input ng-model="carMakeFilter"></label>
+		  	<label>Car Model Filter<input ng-model="carModelFilter"></label>
+		  	<label>Car Year Filter<input ng-model="carYearFilter"></label>
+ 			<ul>
+				<li ng-repeat="car in cars | 
+				filter:{make:carMakeFilter,model:carModelFilter,year:carYearFilter} |
+				orderBy:'year':true">{{car.make}} / {{car.model}} / {{car.year}}"</li>
+			</ul>
+		  </div>
+		</div>
+		<script>
+			angular.module('myApp', [])
+				.controller('myCtrl', function($scope) {
+					$scope.cars = [
+					  { make: "Ford", model: "Fusion", year: 2014, cost: 15000 },
+					  { make: "Tesla", model: "S", year: 2015, cost: 80000 },
+					  { make: "Porsche", model: "911 Turbo", year: 2015, cost: 70000 },
+					  { make: "Toyota", model: "Corrola", year: 2013, cost: 15000 },
+					  { make: "Kia", model: "Sedona", year: 2012, cost: 10000 },
+					  { make: "Toyota", model: "Highlander", year: 2010, cost: 20000 }
+					]
+				});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Intro to angular.js </title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+		<style> 
+			label { display : block; } 
+		</style>
+	</head>
+	<body>
+		<div ng-app="myApp"> 
+		  <div ng-controller="myCtrl">
+ 			<ol ng-repeat="color in colors | orderBy:color">
+ 				<li ng-bind="color"></li>
+			</ol>
+			<form>
+				<h2>New Color</h2>
+				<label>Color<input ng-model="newColor"></label>
+				<button type="button" ng-click="addColor()">Add Color</button>		
+			</form>
+			<form>
+				<h2>Delete Color</h2>
+				<label>Color<input ng-model="oldColor"></label>
+				<button type="button" ng-click="deleteColor()">Delete Color</button>		
+			</form>
+		</div>
+		<script>
+			angular.module('myApp', [])
+				.controller('myCtrl', function($scope) {
+					$scope.colors = ['red', 'white', 'blue', 'green', 'saffron', 'light blue', 'gold', 'black', 'yellow'];
+					
+					$scope.addColor = function() {
+						$scope.colors.push($scope.newColor);
+					};
+					$scope.deleteColor = function() {
+						var length = $scope.colors.length;
+						for (var i = 0; i < length; i++) {
+							if ($scope.colors[i] == $scope.oldColor) {
+								console.log("deleting the color:: " + $scope.oldColor);
+								$scope.colors.splice(i, 1);
+								break;
+							}
+						}
+					};
+				});
+		</script>
+	</body>
+</html>

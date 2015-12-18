@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Intro to angular.js </title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+		<style> 
+			label { display : block; } 
+		</style>
+	</head>
+	<body>
+ 		<div ng-app="myApp"> 
+		  <div ng-controller="MyCtrl">
+		  </div>
+		</div>
+		<script>
+			// getting around minification where service names would be renamed
+			function myCtrl($log, $scope, $rootScope) {
+				$log.log("Angular log");			
+			}
+		
+			myCtrl.$inject = ["$log", "$scope", "$rootScope"];
+		
+			angular.module('myApp', [])
+				.controller('MyCtrl', myCtrl);
+		</script>
+	</body>
+</html>

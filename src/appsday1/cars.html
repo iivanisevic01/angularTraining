@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Intro to angular.js </title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+	</head>
+	<body>
+		<div ng-app="myApp"> 
+		  <div ng-controller="myCtrl">
+		  <table>
+		  	<th>Make</th>
+		  	<th>Model</th>
+		  	<th>Year</th>
+		  	<th>Cost</th>
+		  	<tr ng-repeat="car in cars">
+		  	<td>{{car.make}}</td>
+		  	<td>{{car.model}}</td>
+		  	<td>{{car.year}}</td>
+		  	<td>{{car.cost}}</td>
+		  	</tr>
+		  </table>
+<!-- 			<ul>
+				<li ng-repeat="car in cars">{{car.make}}</li>
+			</ul>
+ -->		  </div>
+		</div>
+		<script>
+			angular.module('myApp', [])
+				.controller('myCtrl', function($scope) {
+					$scope.cars = [
+					  { make: "Ford", model: "Fusion", year: 2014, cost: 15000 },
+					  { make: "Tesla", model: "S", year: 2015, cost: 80000 },
+					  { make: "Porsche", model: "911 Turbo", year: 2015, cost: 70000 }
+					]
+				});
+		</script>
+	</body>
+</html>
